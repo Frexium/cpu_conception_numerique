@@ -43,7 +43,7 @@ begin
         when "1001" => SR_OUT_L := "0"; SR_OUT_R := "0";
             S(7 downto 4) := "0000"; S(3 downto 0) := Buffer_A;  
         when "1010" => My_S := Buffer_B; SR_OUT_L := "0"; SR_OUT_R := "0";
-            S(7 downto 4) := "0000"; S(3 downto 0) := Buffer_A;
+            S(7 downto 4) := "0000"; S(3 downto 0) := Buffer_B;
         when "1011" => SR_OUT_L := "0"; SR_OUT_R := "0";
             My_Buffer_A(3 downto 0) := A;
             My_Buffer_A(7 downto 4) := (others => A(3));
