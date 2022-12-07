@@ -50,7 +50,7 @@ begin
             My_Buffer_A(6 downto 4) := "000";
             My_S := not My_Buffer_A;
             S := My_S;
-        when "1100" => My_S := not Buffer_B; SR_OUT_L := "0"; SR_OUT_R <= "0";
+        when "1100" => SR_OUT_L := "0"; SR_OUT_R <= "0";
             My_Buffer_B(3 downto 0) := B;
             My_Buffer_B(7) := B(3);
             My_Buffer_B(6 downto 4) := "000";
