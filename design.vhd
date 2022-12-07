@@ -31,7 +31,9 @@ architecture UAL_arch of UAL is
 begin
 
     case SEL_FCT is
-        when "0000" => My_S <= "00000000"; SR_OUT_L <= "0"; SR_OUT_R <= "0";
+        when "0000" => SR_OUT_L <= "0"; SR_OUT_R <= "0";
+            My_S(7 downto 4) := "0000";
+            S <= My_S;
         when "0001" => 
         when "0010" => 
         when "0011" => 
@@ -41,9 +43,11 @@ begin
         when "0111" => 
         when "1000" => 
         when "1001" => SR_OUT_L := "0"; SR_OUT_R := "0";
-            S(7 downto 4) := "0000"; S(3 downto 0) := Buffer_A;  
+            My_S(7 downto 4) := "0000"; My_S(3 downto 0) := Buffer_A; 
+            S <= My_S; 
         when "1010" => My_S := Buffer_B; SR_OUT_L := "0"; SR_OUT_R := "0";
-            S(7 downto 4) := "0000"; S(3 downto 0) := Buffer_B;
+            My_S(7 downto 4) := "0000"; My_S(3 downto 0) := Buffer_B;
+            S <= My_S;
         when "1011" => SR_OUT_L := "0"; SR_OUT_R := "0";
             My_Buffer_A(3 downto 0) := A;
             My_Buffer_A(7 downto 4) := (others => A(3));
