@@ -45,3 +45,7 @@ begin
         SR_OUT_R => SR_OUT_R_sim,
         S => S_sim
     );
+
+    process
+
+    

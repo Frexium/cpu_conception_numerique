@@ -72,3 +72,7 @@ begin
             My_Buffer_A(7 downto 4) := (others => A(3)); My_Buffer_B(7 downto 4) := (others => B(3));
             My_S := My_Buffer_A xor My_Buffer_B;
             S <= My_S;
+
+    end case;
+
+end UAL_arch;
