@@ -35,27 +35,30 @@ begin
             My_S(7 downto 4) := "0000";
             S <= My_S;
         when "0001" => 
-        when "0010" => 
-        when "0011" => 
-        when "0100" => 
+        when "0010" => My_S(7 downto 4) := "0000"; My_S(3 downto 0) := Buffer_A + Buffer_B;
+            S <= My_S;
+        when "0011" => My_S(7 downto 4) := "0000"; My_S(3 downto 0) := Buffer_A - Buffer_B;
+            S <= My_S;
+        when "0100" => My_S(7 downto 4) := "0000"; My_S(3 downto 0) := Buffer_A * Buffer_B;
+            S <= My_S;
         when "0101" => 
         when "0110" => 
         when "0111" => 
         when "1000" => 
         when "1001" => SR_OUT_L := "0"; SR_OUT_R := "0";
-            My_S(7 downto 4) := "0000"; My_S(3 downto 0) := Buffer_A; 
+            My_S(7 downto 4) := "0000"; My_S(3 downto 0) := My_Buffer_A; 
             S <= My_S; 
-        when "1010" => My_S := Buffer_B; SR_OUT_L := "0"; SR_OUT_R := "0";
-            My_S(7 downto 4) := "0000"; My_S(3 downto 0) := Buffer_B;
+        when "1010" => SR_OUT_L := "0"; SR_OUT_R := "0";
+            My_S(7 downto 4) := "0000"; My_S(3 downto 0) := My_Buffer_B;
             S <= My_S;
         when "1011" => SR_OUT_L := "0"; SR_OUT_R := "0";
-            My_Buffer_A(3 downto 0) := A;
-            My_Buffer_A(7 downto 4) := (others => A(3));
+            My_Buffer_A(3 downto 0) := Buffer_A;
+            My_Buffer_A(7 downto 4) := (others => Buffer_A(3));
             My_S := not My_Buffer_A;
             S <= My_S;
         when "1100" => SR_OUT_L := "0"; SR_OUT_R <= "0";
-            My_Buffer_B(3 downto 0) := B;
-            My_Buffer_B(7 downto 4) := (others => B(3));
+            My_Buffer_B(3 downto 0) := Buffer_B;
+            My_Buffer_B(7 downto 4) := (others => Buffer_B(3));
             My_S := not My_Buffer_B;
             S <= My_S;
         when "1101" => SR_OUT_L := "0"; SR_OUT_R := "0";
@@ -63,13 +66,13 @@ begin
             My_S(3 downto 0) := My_Buffer_A and My_Buffer_B;
             S <= My_S;
         when "1110" => SR_OUT_L := "0"; SR_OUT_R := "0";
-            My_Buffer_A(3 downto 0) := A; My_Buffer_B(3 downto 0) := B;
-            My_Buffer_A(7 downto 4) := (others => A(3)); My_Buffer_B(7 downto 4) := (others => B(3));
+            My_Buffer_A(3 downto 0) := Buffer_A; My_Buffer_B(3 downto 0) := Buffer_B;
+            My_Buffer_A(7 downto 4) := (others => Buffer_A(3)); My_Buffer_B(7 downto 4) := (others => Buffer_B(3));
             My_S := My_Buffer_A or My_Buffer_B;
             S <= My_S;
         when "1111" => SR_OUT_L := "0"; SR_OUT_R := "0";
-            My_Buffer_A(3 downto 0) := A; My_Buffer_B(3 downto 0) := B;
-            My_Buffer_A(7 downto 4) := (others => A(3)); My_Buffer_B(7 downto 4) := (others => B(3));
+            My_Buffer_A(3 downto 0) := Buffer_A; My_Buffer_B(3 downto 0) := Buffer_B;
+            My_Buffer_A(7 downto 4) := (others => Buffer_A(3)); My_Buffer_B(7 downto 4) := (others => Buffer_B(3));
             My_S := My_Buffer_A xor My_Buffer_B;
             S <= My_S;
 
