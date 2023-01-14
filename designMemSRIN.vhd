@@ -20,8 +20,8 @@ architecture MEMSRIN_arch of MEMSRIN is
         process(clk)
         begin
             if rising_edge(clk) then
-                A_IN <= A_IN;
-                B_IN <= B_IN;
+                SR_IN_L <= A_IN;
+                SR_IN_R <= B_IN;
             end if;
         end process;
 end MEMSRIN_arch;

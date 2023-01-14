@@ -24,8 +24,6 @@ architecture myUALtestbench_Arch of myUALtestbench is
     );
     end component;
 
-    constant N : integer := 6;
-
     signal Buffer_A_sim, Buffer_B_sim	: std_logic_vector(3 downto 0) := (others => '0');
     signal Buffer_L_sim, Buffer_R_sim, SR_OUT_L, SR_OUT_L   : std_logic := '0';
     signal SEL_FCT_sim              	: std_logic_vector(3 downto 0) := (others => '0');
@@ -46,6 +44,26 @@ begin
         S => S_sim
     );
 
-    process
-
-    
+    MyStimulus_Proc : process
+    begin
+        for i in 0 to (2**4)-1 loop
+            for j in 0 to (2**4)-1 loop
+                for k in 0 to 1 loop
+                    for l in 0 to 1 loop
+                        for m in 0 to 1 loop   
+                            Buffer_A_sim <= std_logic_vector(to_unsigned(k,4));
+                            Buffer_B_sim <= std_logic_vector(to_unsigned(i,4));
+                            SEL_FCT_sim <= std_logic_vector(to_unsigned(j,4));
+                            Buffer_L_sim <= std_logic'val(l); 
+                            Buffer_R_sim <= std_logic'val(m); 
+                            wait for 10 ns;
+                            report "Buffer_A = " & Buffer_A_sim & " | Buffer_B = " & Buffer_B_sim & " | SEl_FCT = " & SEL_FCT_sim & " || S = " & S_sim; 
+                        end loop;
+                    end loop;
+                end loop;
+                wait for 10 ns; 
+            end loop;
+        end loop;
+    wait;
+    end process;
+end myUALtestbench_Arch;
